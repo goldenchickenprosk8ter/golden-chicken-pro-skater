@@ -1835,8 +1835,8 @@ function buildMap(id){
 }
 // parque de skate VERSIÓN 1 (campo - centro)
 function skatePark(mat, railCols){
-  buildRamp(0,-100,0,36,8,17,mat); buildRamp(0,105,Math.PI,36,8,17,mat);
-  buildRamp(-108,0,Math.PI/2,30,8,16,mat); buildRamp(108,0,-Math.PI/2,30,8,16,mat);
+  buildRamp(0,-50,0,36,8,17,mat); buildRamp(0,55,Math.PI,36,8,17,mat);
+  buildRamp(-55,0,Math.PI/2,30,8,16,mat); buildRamp(55,0,-Math.PI/2,30,8,16,mat);
   buildFunbox(-72,-72,0.6); buildFunbox(72,72,-0.5); buildFunbox(72,-72,0.4); buildFunbox(-72,72,-0.4);
   buildKicker(-34,42,0); buildKicker(38,-46,Math.PI); buildKicker(-52,-16,Math.PI/2); buildKicker(54,20,-Math.PI/2);
   buildRail(-42,-44,42,-44,3.4,railCols[0]); buildRail(-42,48,42,48,3.6,railCols[0]);
@@ -1845,8 +1845,8 @@ function skatePark(mat, railCols){
 }
 // parque de skate VERSIÓN 2 (ciudad - esquinas)
 function skatePark2(mat, railCols){
-  buildRamp(-85,-85,0,30,8,15,mat); buildRamp(85,85,Math.PI,30,8,15,mat);
-  buildRamp(-80,75,Math.PI/2,28,8,15,mat); buildRamp(80,-75,-Math.PI/2,28,8,15,mat);
+  buildRamp(-45,-45,0,30,8,15,mat); buildRamp(45,45,Math.PI,30,8,15,mat);
+  buildRamp(-40,40,Math.PI/2,28,8,15,mat); buildRamp(40,-40,-Math.PI/2,28,8,15,mat);
   buildFunbox(-55,-55,0.6); buildFunbox(55,55,-0.5); buildFunbox(55,-55,0.4); buildFunbox(-55,55,-0.4);
   buildKicker(-15,65,0); buildKicker(20,-70,Math.PI); buildKicker(-70,25,Math.PI/2); buildKicker(70,-35,-Math.PI/2);
   buildRail(-30,-60,30,-60,3.2,railCols[0]); buildRail(-70,35,70,35,3.4,railCols[0]);
@@ -1855,8 +1855,8 @@ function skatePark2(mat, railCols){
 }
 // parque de skate VERSIÓN 3 (laguna/otros - triángulo)
 function skatePark3(mat, railCols){
-  buildRamp(-60,-95,Math.PI/6,32,8,16,mat); buildRamp(60,95,-Math.PI/6,32,8,16,mat);
-  buildRamp(0,-60,-Math.PI/2,28,8,15,mat); buildRamp(0,110,Math.PI/2,28,8,15,mat);
+  buildRamp(-40,-50,Math.PI/6,32,8,16,mat); buildRamp(40,50,-Math.PI/6,32,8,16,mat);
+  buildRamp(0,-40,-Math.PI/2,28,8,15,mat); buildRamp(0,60,Math.PI/2,28,8,15,mat);
   buildFunbox(-45,-65,0.6); buildFunbox(45,-65,-0.5); buildFunbox(0,70,0.4); buildFunbox(-65,35,-0.4);
   buildKicker(-50,30,0.3); buildKicker(45,-45,-Math.PI+0.3); buildKicker(-35,-20,Math.PI/2+0.2); buildKicker(60,60,-Math.PI/2);
   buildRail(-40,-35,40,-35,3.3,railCols[0]); buildRail(-50,50,50,50,3.5,railCols[0]);
