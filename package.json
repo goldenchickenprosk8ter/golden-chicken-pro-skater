@@ -1,0 +1,14 @@
+﻿{
+  "name": "golden-chicken-pro-skater",
+  "version": "1.0.0",
+  "description": "Golden Chicken Pro Skater - Mobile APK",
+  "main": "www/index.html",
+  "scripts": {
+    "build": "cordova build android --release",
+    "build-debug": "cordova build android"
+  },
+  "dependencies": {
+    "cordova-android": "^13.0.0"
+  },
+  "author": "Claude & Matheo"
+}
