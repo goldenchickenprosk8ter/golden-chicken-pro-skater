@@ -1757,7 +1757,7 @@ function buildRamp(x,z,rotY,width,height,depth,mat){
   mesh.castShadow=mesh.receiveShadow=true;
   worldGroup.add(mesh);
 
-  const dir=new THREE.Vector3(Math.sin(rotY+Math.PI),0,Math.cos(rotY+Math.PI)).normalize();
+  const dir=new THREE.Vector3(Math.sin(rotY),0,Math.cos(rotY)).normalize();
   ramps.push({x,z,rotY,width,height,depth,dir,kind:'ramp',launch:1.4});
 
   // Riel en la parte superior
