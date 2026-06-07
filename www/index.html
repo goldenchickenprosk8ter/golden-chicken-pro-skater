@@ -3335,6 +3335,8 @@ function checkRamps(){
       if(into<-0.3 && Math.abs(P.speed)>6){
         const power=Math.min(Math.abs(P.speed)/MAXSPEED,1);
         P.vy=JUMP*P.jumpBoost*(0.8+power*1.1)+r.height*0.45*(r.launch||1); P.onGround=false; P.speed*=0.85;
+        // Impulso horizontal en dirección de la rampa (para kickers)
+        if(r.launch&&r.launch>1.5){ const boost=Math.max(8,P.speed*1.2); P.pos.x+=r.dir.x*boost*0.05; P.pos.z+=r.dir.z*boost*0.05; }
         startAir(); spawnDust(P.pos,0xffe08a,10); Music.jump(); return;
       }
     }
