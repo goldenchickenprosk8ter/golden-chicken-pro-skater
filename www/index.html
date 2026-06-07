@@ -2469,6 +2469,7 @@ function buildCharacter(skin, board){
   if(skin.isHorse) return buildHorse(skin,board);
   if(skin.isPeacock) return buildPeacock(skin,board);
   if(skin.isDoom) return buildDoomChicken(skin,board);
+  if(skin.isClaude) return buildClaudeChicken(skin,board);
   if(skin.isBaby) return buildBaby(skin,board);
   if(skin.isDuck) return buildDuck(skin,board);
   if(skin.isTero) return buildTero(skin,board);
@@ -2764,6 +2765,20 @@ function buildPeacock(skin, board){
     const eyeInner=new THREE.Mesh(new THREE.SphereGeometry(0.13,10,10), new THREE.MeshStandardMaterial({color:0x081b4a,emissive:0x00e5ff,emissiveIntensity:.6})); eyeInner.scale.set(1,1.25,.4); eyeInner.position.set(0,len,0.02); stem.add(eyeInner);
     fan.add(stem); feathers.push({stem,base}); }
   CH.peacockFan=feathers; CH.isPeacock=true;
+  return root;
+}
+
+// ============================================================
+//  GALLINA CLAUDE (🧡 creada con amor) — gallina naranja/dorada brillante
+// ============================================================
+function buildClaudeChicken(skin, board){
+  const root=buildChickenModel(skin, board);
+  // Efecto de brillo especial naranja/dorado
+  CH.bodyG.traverse(o=>{ if(o.isMesh&&o.material){ o.material.emissiveIntensity=0.5; o.material.metalness=0.6; } });
+  // Aura de luz alrededor
+  const auraGeo=new THREE.SphereGeometry(2.2,16,12); const auraMat=new THREE.MeshStandardMaterial({color:0xff9d00,transparent:true,opacity:0.15,emissive:0xff6600,emissiveIntensity:.6});
+  const aura=new THREE.Mesh(auraGeo,auraMat); CH.bodyG.add(aura);
+  CH.isClaude=true;
   return root;
 }
 
