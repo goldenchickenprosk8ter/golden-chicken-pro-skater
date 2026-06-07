@@ -794,6 +794,9 @@ let peacockUnlocked = localStorage.getItem('gcps_peacock')==='1';
 // ---------- SECRETO: GALLINA DOOM (código IDKFA en el menú) ----------
 const DOOM = { id:'doom', name:'Gallina DOOM', body:0x3a5f2a, accent:0x6e8b3d, emis:0x224400, ei:.2, trail:0x33ff44, isDoom:true };
 let doomUnlocked = localStorage.getItem('gcps_doom')==='1';
+// ---------- SECRETO: GALLINA CLAUDE (creada con amor por Claude) ----------
+const CLAUDE = { id:'claude', name:'🧡 Gallina Claude', body:0xff9d00, accent:0xffcc00, emis:0xff6600, ei:.5, trail:0xffd700, isClaude:true };
+let claudeUnlocked = localStorage.getItem('gcps_claude')==='1' || true;  // siempre desbloqueada
 // ---------- TIENDA: GALLINAS comprables (decorate añade detalles 3D) ----------
 function decoRobot(ch){
   const H=ch.headG, B=ch.bodyG;
@@ -1343,6 +1346,14 @@ doomTile.onclick=()=>{ clearSpecial(); selDoom=true; [...skinGrid.children].forE
 skinGrid.appendChild(doomTile);
 function showDoomTile(){ doomTile.style.display=''; }
 if(doomUnlocked) showDoomTile();
+// gallina CLAUDE (🧡 siempre desbloqueada - hecha con amor)
+const claudeTile=document.createElement('div'); claudeTile.className='opt';
+claudeTile.innerHTML=`<div class="swatch" style="background:#ff9d00;box-shadow:0 0 16px #ff6600">🧡</div><div class="nm">Gallina Claude</div>`;
+claudeTile.onclick=()=>{ clearSpecial(); if(!selClaude) selClaude=true; else selClaude=false; [...skinGrid.children].forEach(c=>c.classList.remove('sel')); if(selClaude) claudeTile.classList.add('sel'); };
+skinGrid.appendChild(claudeTile);
+function showClaudeTile(){ claudeTile.style.display=''; }
+if(claudeUnlocked) showClaudeTile();
+let selClaude=false;
 function unlockPeacock(){ if(peacockUnlocked)return; peacockUnlocked=true; saveProg('gcps_peacock','1'); showPeacockTile();
   toast('🦚 ¡SECRETO DESBLOQUEADO!<br><span style="font-size:14px;font-weight:bold">EL PAVO REAL</span><br><span style="font-size:12px;font-weight:normal">¡Conseguiste TODOS los trofeos! Ya podés elegirlo en SKIN DE LA GALLINA</span>',6500); try{ Music.egg('gold'); }catch(e){} }
 function unlockDoom(){ if(doomUnlocked)return; doomUnlocked=true; saveProg('gcps_doom','1'); showDoomTile();
@@ -3932,7 +3943,7 @@ function runGachaChicken(win, rar, skinArray){
 // ============================================================
 //  ROPERO (equipá lo que tengas · preview 3D en vivo)
 // ============================================================
-function currentChosenSkin(){ return selShop ? selShop : selHorse?HORSE : selPeacock?PEACOCK : selDoom?DOOM : SKINS[selSkin]; }
+function currentChosenSkin(){ return selShop ? selShop : selHorse?HORSE : selPeacock?PEACOCK : selDoom?DOOM : selClaude?CLAUDE : SKINS[selSkin]; }
 function syncMenuSelection(){
   [...skinGrid.children].forEach(c=>c.classList.remove('sel'));
   if(selShop){ /* las gallinas de tienda no tienen casilla en el menú */ }
@@ -4035,6 +4046,7 @@ function renderCloset(){
   if(horseUnlocked) sg.appendChild(clTile('🐴',nm('horse','Caballo'), selHorse, ()=>closetPick(()=>{ clearSpecial(); selHorse=true; }, '✓ '+nm('horse','Caballo'))));
   if(peacockUnlocked) sg.appendChild(clTile('🦚',nm('peacock','Pavo Real'), selPeacock, ()=>closetPick(()=>{ clearSpecial(); selPeacock=true; }, '✓ '+nm('peacock','Pavo Real'))));
   if(doomUnlocked) sg.appendChild(clTile('💀','Gallina DOOM', selDoom, ()=>closetPick(()=>{ clearSpecial(); selDoom=true; }, '✓ DOOM')));
+  if(claudeUnlocked) sg.appendChild(clTile('🧡','Gallina Claude', selClaude, ()=>closetPick(()=>{ clearSpecial(); selClaude=true; }, '✓ Gallina Claude')));
   SHOP_SKINS.forEach(s=>{ if(!ownsItem(s.id))return;
     sg.appendChild(clTile(s.emoji,nm(s.id,s.name), selShop&&selShop.id===s.id, ()=>closetPick(()=>{ clearSpecial(); selShop=s; }, '✓ '+nm(s.id,s.name))));
   });
