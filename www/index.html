@@ -1837,28 +1837,25 @@ function buildMap(id){
 function skatePark(mat, railCols){
   // Rampas removidas
   buildFunbox(-72,-72,0.6); buildFunbox(72,72,-0.5); buildFunbox(72,-72,0.4); buildFunbox(-72,72,-0.4);
-  buildKicker(-34,42,0); buildKicker(38,-46,Math.PI); buildKicker(-52,-16,Math.PI/2); buildKicker(54,20,-Math.PI/2);
-  buildRail(-42,-44,42,-44,3.4,railCols[0]); buildRail(-42,48,42,48,3.6,railCols[0]);
-  buildRail(-96,32,-96,-32,4.2,railCols[1]); buildRail(96,-32,96,32,4.2,railCols[1]);
-  buildRail(-58,60,-20,60,3.0,railCols[0]); buildRail(20,-62,58,-62,3.0,railCols[1]);
+  buildKicker(-50,0,0); buildKicker(50,0,Math.PI);
+  buildRail(-30,-50,-30,50,3.2,railCols[0]); buildRail(30,-50,30,50,3.2,railCols[1]);
+  buildRail(-70,0,70,0,3.8,railCols[0]);
 }
 // parque de skate VERSIÓN 2 (ciudad - esquinas)
 function skatePark2(mat, railCols){
   // Rampas removidas
   buildFunbox(-55,-55,0.6); buildFunbox(55,55,-0.5); buildFunbox(55,-55,0.4); buildFunbox(-55,55,-0.4);
-  buildKicker(-15,65,0); buildKicker(20,-70,Math.PI); buildKicker(-70,25,Math.PI/2); buildKicker(70,-35,-Math.PI/2);
-  buildRail(-30,-60,30,-60,3.2,railCols[0]); buildRail(-70,35,70,35,3.4,railCols[0]);
-  buildRail(-78,10,-78,-40,4.0,railCols[1]); buildRail(78,-20,78,50,4.0,railCols[1]);
-  buildRail(-45,75,15,75,2.8,railCols[0]); buildRail(-10,-75,50,-75,2.8,railCols[1]);
+  buildKicker(0,-60,Math.PI/2); buildKicker(0,60,-Math.PI/2); buildKicker(-60,0,0); buildKicker(60,0,Math.PI);
+  buildRail(-40,-40,40,-40,3.0,railCols[0]); buildRail(-40,40,40,40,3.0,railCols[1]);
+  buildRail(-60,-25,-60,25,3.6,railCols[0]); buildRail(60,-25,60,25,3.6,railCols[1]);
 }
 // parque de skate VERSIÓN 3 (laguna/otros - triángulo)
 function skatePark3(mat, railCols){
   // Rampas removidas
   buildFunbox(-45,-65,0.6); buildFunbox(45,-65,-0.5); buildFunbox(0,70,0.4); buildFunbox(-65,35,-0.4);
-  buildKicker(-50,30,0.3); buildKicker(45,-45,-Math.PI+0.3); buildKicker(-35,-20,Math.PI/2+0.2); buildKicker(60,60,-Math.PI/2);
-  buildRail(-40,-35,40,-35,3.3,railCols[0]); buildRail(-50,50,50,50,3.5,railCols[0]);
-  buildRail(-85,-10,-85,50,4.1,railCols[1]); buildRail(80,15,80,-45,4.1,railCols[1]);
-  buildRail(-20,65,30,75,3.0,railCols[0]); buildRail(-55,-75,25,-75,3.0,railCols[1]);
+  buildKicker(-40,40,0.4); buildKicker(40,-40,-Math.PI+0.4);
+  buildRail(-35,0,35,0,3.2,railCols[0]); buildRail(0,-50,0,50,4.0,railCols[1]);
+  buildRail(-50,-30,50,-30,3.4,railCols[0]); buildRail(-50,60,50,60,3.4,railCols[1]);
 }
 // KICKER: rampa chica y empinada que te catapulta MUY alto al subirla con velocidad
 function buildKicker(x,z,rotY){
