@@ -2123,15 +2123,10 @@ function buildNieve(){
   scene.background=new THREE.Color(0xdcecff);
   groundPlane(noiseTex('#dfeaf5',['#ffffff','#cfe0f0','#eaf2fb'],3,24), 0xffffff);
   addClouds(12,130);
-  // montañas nevadas de fondo (más, en varios anillos para llenar el horizonte)
-  for(let ring=0;ring<3;ring++){ const dist=ARENA+40+ring*90, n=8+ring*2;
-    for(let i=0;i<n;i++){ const ang=(i/n)*Math.PI*2 + ring*0.3; const px=Math.cos(ang)*dist, pz=Math.sin(ang)*dist - 20; if(pz>ARENA) continue; const s=42+Math.random()*48;
-      const mt=new THREE.Mesh(new THREE.ConeGeometry(s,s*1.4,6), new THREE.MeshStandardMaterial({color:0x9fb6cf,roughness:1,flatShading:true})); mt.position.set(px,s*0.6,pz); worldGroup.add(mt);
-      const cap=new THREE.Mesh(new THREE.ConeGeometry(s*0.45,s*0.5,6), new THREE.MeshStandardMaterial({color:0xffffff,roughness:.9,flatShading:true})); cap.position.set(px,s*1.05,pz); worldGroup.add(cap); } }
-  // colinas nevadas cercanas (montañitas dentro del área)
-  for(let i=0;i<6;i++){ const hx=(Math.random()-.5)*ARENA*2, hz=(Math.random()-.5)*ARENA*2; if(Math.hypot(hx,hz)<40)continue; const s=10+Math.random()*14;
-    const hill=new THREE.Mesh(new THREE.SphereGeometry(s,16,10,0,Math.PI*2,0,Math.PI/2), new THREE.MeshStandardMaterial({color:0xeef6ff,roughness:.95})); hill.scale.y=0.4; hill.position.set(hx,0,hz); worldGroup.add(hill); }
-  skatePark2(new THREE.MeshStandardMaterial({color:0xcfe0f0,roughness:.6,metalness:.1,side:THREE.DoubleSide}),[0x66ccff,0xffffff]);
+  // Mapa de nieve único: solo kickers en diagonal y rieles verticales
+  buildFunbox(-50,-50,0.4); buildFunbox(50,50,-0.4);
+  buildKicker(-30,30,0.5); buildKicker(30,-30,-Math.PI+0.5);
+  buildRail(-50,50,50,-50,3.8,[0x66ccff,0xffffff][0]); buildRail(0,-60,0,60,4.2,[0x66ccff,0xffffff][1]);
   buildCrate(26,-10,2.6,'#7a9ab5'); buildBarrel(-24,-12);
   // muñecos de nieve
   for(let i=0;i<7;i++){ const sp=findSpot(2.6,ARENA*1.5,14); if(!sp)continue;
