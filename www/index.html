@@ -3165,6 +3165,7 @@ class TouchButtons{
         else if(action==='flip') doAirTrick('flip');
         else if(action==='grab') doAirTrick('grab');
         else if(action==='spin') doAirTrick('spin');
+        else if(action==='fly') toggleFly();
       });
       btn.addEventListener('touchend', e=>{
         e.preventDefault();
@@ -3643,12 +3644,14 @@ function startGame(){
       joystick=new VirtualJoystick('joystickContainer', { size:140, deadzone:0.25 });
     }
     if(!touchButtons){
-      touchButtons=new TouchButtons('buttonsContainer', [
+      const buttons=[
         { id:'jump', emoji:'⬆️', key:'Space' },
         { id:'flip', emoji:'🔄', key:'J' },
         { id:'grab', emoji:'🎯', key:'K' },
         { id:'spin', emoji:'⚡', key:'L' }
-      ]);
+      ];
+      if(isAdmin){ buttons.push({ id:'fly', emoji:'✈️', key:'Control' }); }
+      touchButtons=new TouchButtons('buttonsContainer', buttons);
     }
     document.getElementById('joystickContainer').style.display='block';
     document.getElementById('buttonsContainer').style.display='block';
