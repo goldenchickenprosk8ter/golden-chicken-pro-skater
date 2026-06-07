@@ -571,6 +571,10 @@
       <button class="langBtn" id="togglePlayer">🐔 Gallina: ON</button>
       <button class="langBtn" id="togglePet">🐤 Mascota: ON</button>
     </div>
+    <h3 class="setSec" id="flySectionTitle" style="display:none">✈️ VUELO ADMIN</h3>
+    <div class="langRow" id="flySection" style="display:none">
+      <button class="langBtn" id="toggleFlyMode">✈️ Vuelo: OFF</button>
+    </div>
     <h3 class="setSec" data-i18n="account">👤 CUENTA</h3>
     <div id="setAccount"></div>
     <h3 class="setSec" data-i18n="levelsSec">⭐ NIVELES</h3>
@@ -3644,14 +3648,12 @@ function startGame(){
       joystick=new VirtualJoystick('joystickContainer', { size:140, deadzone:0.25 });
     }
     if(!touchButtons){
-      const buttons=[
+      touchButtons=new TouchButtons('buttonsContainer', [
         { id:'jump', emoji:'⬆️', key:'Space' },
         { id:'flip', emoji:'🔄', key:'J' },
         { id:'grab', emoji:'🎯', key:'K' },
         { id:'spin', emoji:'⚡', key:'L' }
-      ];
-      if(isAdmin){ buttons.push({ id:'fly', emoji:'✈️', key:'Control' }); }
-      touchButtons=new TouchButtons('buttonsContainer', buttons);
+      ]);
     }
     document.getElementById('joystickContainer').style.display='block';
     document.getElementById('buttonsContainer').style.display='block';
@@ -4266,7 +4268,7 @@ function renderLevels(){
   }
   const ce=strip.children[Math.max(0,cur-2)]; if(ce) strip.scrollLeft=ce.offsetLeft-16;
 }
-function openSettings(){ const u=(typeof currentUser==='function'?currentUser():'')||''; document.getElementById('setAccount').textContent=u?('👤 '+u):'—'; if(typeof refreshSetVol==='function') refreshSetVol(); renderLevels(); document.getElementById('settings').style.display='flex'; }
+function openSettings(){ const u=(typeof currentUser==='function'?currentUser():'')||''; document.getElementById('setAccount').textContent=u?('👤 '+u):'—'; if(typeof refreshSetVol==='function') refreshSetVol(); renderLevels(); document.getElementById('flySectionTitle').style.display=isAdmin?'block':'none'; document.getElementById('flySection').style.display=isAdmin?'flex':'none'; document.getElementById('settings').style.display='flex'; }
 document.getElementById('settingsBtn').onclick=openSettings;
 document.getElementById('settingsClose').onclick=()=>document.getElementById('settings').style.display='none';
 document.getElementById('settings').addEventListener('click',e=>{ if(e.target.id==='settings') document.getElementById('settings').style.display='none'; });
@@ -4287,6 +4289,7 @@ function applyViewToggles(){
 document.getElementById('toggleHud').onclick=()=>{ hideHUD=!hideHUD; applyViewToggles(); };
 document.getElementById('togglePlayer').onclick=()=>{ hidePlayer=!hidePlayer; applyViewToggles(); };
 try{ document.getElementById('togglePet').onclick=()=>{ hidePet=!hidePet; applyViewToggles(); }; }catch(e){}
+document.getElementById('toggleFlyMode').onclick=()=>{ if(!isAdmin) return; toggleFly(); const btn=document.getElementById('toggleFlyMode'); if(btn) btn.textContent=P.flying?'✈️ Vuelo: ON':'✈️ Vuelo: OFF'; };
 function applyMusicModeLabel(){ const b=document.getElementById('toggleMusic'); if(b) b.textContent = musicMode==='new' ? (t('musicNew')) : (t('musicOld')); }
 document.getElementById('toggleMusic').onclick=()=>{ musicMode = musicMode==='new'?'old':'new'; try{ localStorage.setItem('gcps_musicmode',musicMode); }catch(e){}
   applyMusicModeLabel();
