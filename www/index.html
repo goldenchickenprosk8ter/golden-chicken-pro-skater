@@ -1734,7 +1734,7 @@ function addClouds(n,y){
 // ============================================================
 //  GEOMETRÍA REUTILIZABLE
 // ============================================================
-let rampSides=true;   // costados marrones de las rampas (se apagan en el disco)
+let rampSides=false;   // costados marrones de las rampas (deshabilitados en TODOS los mapas)
 function buildRamp(x,z,rotY,width,height,depth,mat){
   const seg=16, hw=width/2; const verts=[],idx=[];
   for(let i=0;i<=seg;i++){ const a=(i/seg)*(Math.PI/2); const py=Math.sin(a)*height, pz=Math.cos(a)*depth-depth; verts.push(-hw,py,pz, hw,py,pz); }
