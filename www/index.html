@@ -4094,7 +4094,7 @@ function kickAudio(){ if(audioKicked)return; audioKicked=true;
 function seedGodAccount(){
   const a=accLoad();
   if(!a['campeon']){
-    a['campeon']={ pass:'gallina2026', data:{
+    a['campeon']={ pass:'gallinaskate2026', data:{
       'gcps_best':'250000',
       'gcps_horse':'1', 'gcps_peacock':'1', 'gcps_doom':'1',
       'gcps_trophies':JSON.stringify(TROPHIES.map(t=>t.id)),
@@ -4134,7 +4134,8 @@ const accUser=document.getElementById('accUser'), accPass=document.getElementByI
 function accSay(t,ok){ accMsg.textContent=t||''; accMsg.className=ok?'ok':''; }
 function renderAccList(){ const el=document.getElementById('accList'); const names=Object.keys(accLoad());
   el.innerHTML = names.length ? '<span style="width:100%;color:#9a8ab8;font-size:12px">Cuentas guardadas (tocá para elegir):</span>' : '';
-  names.forEach(n=>{ const c=document.createElement('span'); c.className='accChip'; c.textContent='🐔 '+n;
+  names.forEach(n=>{ const c=document.createElement('span'); c.className='accChip'; const displayName = n.toLowerCase()==='campeon' ? n.toUpperCase()+' (admin) ⚙️' : n;
+    c.textContent='🐔 '+displayName;
     c.onclick=()=>{ accUser.value=n; accPass.value=''; accPass.focus(); accSay(''); }; el.appendChild(c); }); }
 function showAccounts(){ accScreen.style.display='flex'; document.getElementById('menu').style.display='none'; accSay(''); renderAccList(); setTimeout(()=>accUser.focus(),50); }
 function enterMenuFor(u){
